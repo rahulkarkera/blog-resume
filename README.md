@@ -1,79 +1,253 @@
-# Astro Resume
+# Rahul Karkera - Personal Portfolio & Blog
 
-## Features
+A modern, performant personal website built with Astro v4, featuring a resume-style homepage and blog functionality.
 
-- Astro v4
-- TailwindCSS utility classes
-- ESLint / Prettier pre-installed and pre-configured
-- Accessible, semantic HTML markup
-- Responsive & SEO-friendly
-- Dark / Light mode, using Tailwind and CSS variables (referenced from shadcn)
-- [Astro Assets Integration](https://docs.astro.build/en/guides/assets/) for optimised images
-- MD & [MDX](https://docs.astro.build/en/guides/markdown-content/#mdx-only-features) posts
-- Pagination
-- [Automatic RSS feed](https://docs.astro.build/en/guides/rss)
-- Auto-generated [sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
-- [Expressive Code](https://expressive-code.com/) source code and syntax highlighter
+## Overview
 
-## Credits
+This is a personalized portfolio website showcasing my professional experience, skills, and technical blog posts. Built with modern web technologies for optimal performance and user experience.
 
-- [astro-theme-cactus](https://github.com/chrismwilliams/astro-theme-cactus) for blog design
-- [minirezume-framer](https://minirezume.framer.website/) for resume homepage design
+## ✨ Features
 
-## Project Structure
+- **Astro v4** - Fast, content-focused static site generation with hybrid rendering
+- **Resume Homepage** - Professional portfolio with experience, education, and skills sections
+- **Blog System** - MDX/Markdown blog with pagination, tags, and reading time
+- **Multi-Theme Support** - Light, Dark, and System modes with smooth transitions
+- **Fully Responsive** - Mobile-first design with Tailwind CSS
+- **SEO Optimized** - Semantic HTML, meta tags, and automatic sitemap
+- **RSS Feed** - Automatic feed generation for blog posts
+- **Code Highlighting** - Expressive Code with dracula/github-light themes
+- **Performance** - Optimized images with Astro Assets Integration
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Tech Stack
+
+- **Framework**: Astro v4.16.19 (Hybrid mode)
+- **Styling**: Tailwind CSS with custom design system
+- **Deployment**: Vercel (serverless adapter)
+- **Content**: MDX/Markdown with Zod validation
+- **Icons**: astro-icon with custom SVG icons
+- **Package Manager**: pnpm
+
+## 📂 Project Structure
 
 ```text
 ├── public/
+│   ├── fonts/           # Custom fonts
+│   ├── images/          # Static images
+│   └── favicon/         # Favicon assets
 ├── src/
-    ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-|   ├── pages/
-|   ├── styles/
-|   ├── utils/
-|   ├── site.config.ts
-│   └── types.ts
-├── .elintrc.cjs
-├── .gitignore
-├── .prettierignore
-├── package.json
-├── prettier.config.cjs
-├── README.md
-├── tailwind.config.js
-└── tsconfig.json
+│   ├── assets/          # Optimized images (profile photo, etc.)
+│   ├── components/      # Reusable UI components
+│   │   ├── blog/        # Blog-specific components
+│   │   └── layout/      # Header, Footer
+│   ├── content/
+│   │   ├── post/        # Blog posts (MDX/Markdown)
+│   │   ├── _examples/   # Template posts for reference
+│   │   └── config.ts    # Content schema (Zod)
+│   ├── icons/           # Custom SVG icons
+│   ├── layouts/         # Page layouts
+│   ├── pages/           # Routes
+│   │   ├── blog/        # Blog routes with pagination
+│   │   ├── tags/        # Tag-based filtering
+│   │   └── tools/       # Development tools showcase
+│   ├── styles/          # Global CSS and theme variables
+│   ├── utils/           # Helper functions
+│   └── site.config.ts   # Site-wide configuration
+├── astro.config.mjs     # Astro configuration
+├── tailwind.config.js   # Tailwind configuration
+└── tsconfig.json        # TypeScript configuration
 ```
 
-## Editing guide
+## 🚀 Getting Started
 
-### Site info
+### Prerequisites
 
-To edit site info such as site title and description, edit the `src/site.config.ts` file.
+- Node.js 18+
+- pnpm (recommended) or npm
 
-### Page contents
+### Installation
 
-To edit the resume homepage content and design, edit the `src/pages/index.astro` file.
+```bash
+# Install pnpm globally (if not already installed)
+npm install -g pnpm
 
-### Page components
+# Install dependencies
+pnpm install
 
-To edit page components found site-wide such as the card used in the homepage, edit the files found in the `src/components/` directory.
+# Start development server
+pnpm dev
 
-### Layouts
+# Build for production
+pnpm build
 
-To edit the base layouts of all pages, edit the `src/layouts/BaseLayout.astro` file.
+# Preview production build
+pnpm preview
+```
 
-To edit the layout of a blog article, edit the `src/layouts/BlogPost.astro` file.
+The dev server will start at `http://localhost:4321/`
 
-### Blog content
+## ✏️ Content Management
 
-To add blog content, insert `.md` files in the `src/content/` directory.
+### Personal Information
 
-To add images in blog articles, insert a folder in the `src/content/` directory, add both the `.md` and image files into the new folder, and reference the image in your `.md` file.
+Edit `src/site.config.ts` to update:
+- Site title and description
+- Author name
+- Social media links
+- Date formatting preferences
 
-## Theming
+### Homepage Content
 
-To change the theme colours of the site, edit the `src/styles/app.css` file.
+Edit `src/pages/index.astro` to update:
+- Profile photo (stored in `src/assets/`)
+- About section
+- Work experience
+- Education
+- Skills (organized by categories)
 
-To change the fonts of the site, add your font files into `/public`, add it as a `@font-face` in the `src/styles/app.css` file, as a `fontFamily` in the `tailwind.config.js` file, and apply the new font class to the `body` tag in the `src/layouts/BaseLayout.astro` file.
+### Blog Posts
+
+1. **Create a new post**: Copy a template from `src/content/_examples/` to `src/content/post/`
+2. **Update frontmatter**:
+   ```yaml
+   ---
+   title: "Your Post Title"
+   description: "Brief description (50-160 characters)"
+   publishDate: "16 Nov 2025"
+   tags: ["tag1", "tag2"]
+   draft: false  # Set to true to hide from production
+   ---
+   ```
+3. **Add content**: Write your post in Markdown/MDX
+4. **Images**: Place in the same folder as your post and reference relatively
+
+### Tools Page
+
+Edit `src/pages/tools/index.astro` to add/remove development tools you use.
+Add custom icons to `src/icons/` as needed.
+
+## 🎨 Theming
+
+### Colors
+
+Theme colors are defined as CSS variables in `src/styles/app.css`:
+- Supports light, dark, and system modes
+- Colors use HSL format for easy customization
+- Variables: `--primary`, `--background`, `--foreground`, `--muted`, etc.
+
+### Fonts
+
+1. Add font files to `/public/fonts/`
+2. Define `@font-face` in `src/styles/app.css`
+3. Add to `fontFamily` in `tailwind.config.js`
+4. Apply to elements or update base layout
+
+### Theme Toggle
+
+The site supports three theme modes:
+- **Light** (Sun icon)
+- **Dark** (Moon icon)  
+- **System** (Monitor icon) - Follows OS preference
+
+Toggle cycles: Light → Dark → System → Light
+
+## 🔧 Configuration
+
+### Astro Config (`astro.config.mjs`)
+
+- **Output mode**: `hybrid` (static generation with selective SSR)
+- **Adapter**: Vercel serverless
+- **Integrations**: MDX, Tailwind, Sitemap, Expressive Code, astro-icon
+
+### Content Schema (`src/content/config.ts`)
+
+Blog posts are validated with Zod:
+- `title`: max 60 characters
+- `description`: 50-160 characters (SEO optimized)
+- `publishDate`: flexible date format
+- `tags`: auto-lowercased and deduplicated
+- `draft`: boolean (filters from production)
+
+## 📝 Customization Guide
+
+### Skills Section
+
+Edit the skill arrays in `src/pages/index.astro`:
+```typescript
+const languages = ['Python', 'Django']
+const backend = ['REST APIs', 'Celery', 'RabbitMQ']
+// ... etc
+```
+
+### Experience Cards
+
+Use the `Card` component with consistent structure:
+```astro
+<Card
+  heading='Job Title'
+  subheading='Company Name'
+  date='Start - End'
+>
+  <ul class='ml-4 list-disc text-muted-foreground'>
+    <li>Achievement or responsibility</li>
+  </ul>
+</Card>
+```
+
+### Navigation
+
+Edit `src/site.config.ts` to modify menu links:
+```typescript
+export const menuLinks = [
+  { title: 'Home', path: '/' },
+  { title: 'Blog', path: '/blog/' },
+  // Add more links
+]
+```
+
+## 📦 Key Dependencies
+
+- `astro` - Static site generator
+- `@astrojs/mdx` - MDX support
+- `@astrojs/tailwind` - Tailwind integration
+- `@astrojs/vercel` - Vercel deployment adapter
+- `astro-expressive-code` - Code syntax highlighting
+- `astro-icon` - Icon management
+- `zod` - Schema validation
+
+## 🚢 Deployment
+
+This site is configured for Vercel deployment:
+
+```bash
+# Build for production
+pnpm build
+
+# Deploy to Vercel
+vercel deploy --prod
+```
+
+### Environment Variables
+
+Set in your deployment platform:
+- Update `site` URL in `astro.config.mjs` for production
+
+## 📄 License
+
+This project is based on the Astro Resume template with extensive customizations.
+
+## 🙏 Credits
+
+- **Original Template**: [astro-theme-cactus](https://github.com/chrismwilliams/astro-theme-cactus) for blog design
+- **Resume Design**: [minirezume-framer](https://minirezume.framer.website/) for homepage layout
+- **Theme Icons**: Inspired by [ibelick/nim](https://github.com/ibelick/nim)
+- **Framework**: Built with [Astro](https://astro.build/)
+
+## 📧 Contact
+
+- **GitHub**: [@rahulkarkera](https://github.com/rahulkarkera)
+- **LinkedIn**: [rahulkarkera](https://www.linkedin.com/in/rahulkarkera/)
+- **Location**: Bengaluru, India
+
+---
+
+**Status**: ✅ Production Ready | **Last Updated**: November 2025
