@@ -18,7 +18,7 @@ This is a personalized portfolio website showcasing my professional experience, 
 
 - **Framework**: Astro v4.16.19 (Hybrid mode)
 - **Styling**: Tailwind CSS with custom design system
-- **Deployment**: Vercel (serverless adapter)
+- **Deployment**: Cloudflare Pages
 - **Content**: MDX/Markdown with Zod validation
 - **Icons**: astro-icon with custom SVG icons
 - **Package Manager**: pnpm
@@ -123,6 +123,17 @@ Add custom icons to `src/icons/` as needed.
 
 ## 🎨 Theming
 
+### Theme Modes
+
+The site supports three theme modes with persistent localStorage:
+- **Light** (Sun icon) - Light color scheme
+- **Dark** (Moon icon) - Dark color scheme
+- **System** (Monitor icon) - Follows OS preference with automatic updates
+
+Theme toggle cycles: Light → Dark → System → Light
+
+User preference is saved and restored on subsequent visits.
+
 ### Colors
 
 Theme colors are defined as CSS variables in `src/styles/app.css`:
@@ -137,6 +148,19 @@ Theme colors are defined as CSS variables in `src/styles/app.css`:
 3. Add to `fontFamily` in `tailwind.config.js`
 4. Apply to elements or update base layout
 
+### Favicon
+
+All favicon files are located in `/public/favicon/`:
+- `favicon-16x16.png` - Standard browser tab icon
+- `favicon-32x32.png` - Standard browser tab icon
+- `apple-touch-icon.png` - iOS home screen icon (180x180)
+- `android-chrome-192x192.png` - Android home screen icon
+- `android-chrome-512x512.png` - Android home screen icon (high-res)
+- `favicon.ico` - Fallback ICO format
+- `site.webmanifest` - Web app manifest for Android
+
+Favicon features a custom cyan-to-blue gradient (#06b6d4 → #3b82f6) with "R" letter design.
+
 ### Theme Toggle
 
 The site supports three theme modes:
@@ -146,13 +170,16 @@ The site supports three theme modes:
 
 Toggle cycles: Light → Dark → System → Light
 
+User preference is stored in localStorage and persists across sessions.
+
 ## 🔧 Configuration
 
 ### Astro Config (`astro.config.mjs`)
 
 - **Output mode**: `hybrid` (static generation with selective SSR)
-- **Adapter**: Vercel serverless
+- **Adapter**: Cloudflare Pages
 - **Integrations**: MDX, Tailwind, Sitemap, Expressive Code, astro-icon
+- **Site URL**: https://rahulk.pages.dev
 
 ### Content Schema (`src/content/config.ts`)
 
@@ -205,27 +232,50 @@ export const menuLinks = [
 - `astro` - Static site generator
 - `@astrojs/mdx` - MDX support
 - `@astrojs/tailwind` - Tailwind integration
-- `@astrojs/vercel` - Vercel deployment adapter
+- `@astrojs/cloudflare` - Cloudflare Pages deployment adapter
 - `astro-expressive-code` - Code syntax highlighting
 - `astro-icon` - Icon management
+- `sharp` - Image processing for favicon generation
 - `zod` - Schema validation
 
 ## 🚢 Deployment
 
-This site is configured for Vercel deployment:
+This site is configured for Cloudflare Pages deployment:
+
+### Automatic Deployment
+
+Push to the `main` branch to trigger automatic deployment to Cloudflare Pages.
+
+### Manual Build
 
 ```bash
 # Build for production
 pnpm build
 
-# Deploy to Vercel
-vercel deploy --prod
+# Output directory: dist/
 ```
 
-### Environment Variables
+### Cloudflare Pages Settings
 
-Set in your deployment platform:
-- Update `site` URL in `astro.config.mjs` for production
+- **Build command**: `pnpm build`
+- **Build output directory**: `dist`
+- **Node version**: 18+
+- **Site URL**: https://rahulk.pages.dev
+
+## 📝 Page Title Behavior
+
+Pages without an explicit `title` in meta will display just the site title ("Rahul Karkera").
+Pages with a title will display: "Page Title • Rahul Karkera"
+
+To omit the page title prefix (homepage, tools page):
+```astro
+<PageLayout meta={{ description: 'Page description' }}>
+```
+
+To include a page title:
+```astro
+<PageLayout meta={{ title: 'Blog', description: 'Page description' }}>
+```
 
 ## 📄 License
 
