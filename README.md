@@ -159,8 +159,6 @@ All favicon files are located in `/public/favicon/`:
 - `favicon.ico` - Fallback ICO format
 - `site.webmanifest` - Web app manifest for Android
 
-Favicon features a custom cyan-to-blue gradient (#06b6d4 → #3b82f6) with "R" letter design.
-
 ### Theme Toggle
 
 The site supports three theme modes:
@@ -261,21 +259,6 @@ pnpm build
 - **Build output directory**: `dist`
 - **Node version**: 18+
 - **Site URL**: https://rahulk.pages.dev
-
-## 📝 Page Title Behavior
-
-Pages without an explicit `title` in meta will display just the site title ("Rahul Karkera").
-Pages with a title will display: "Page Title • Rahul Karkera"
-
-To omit the page title prefix (homepage, tools page):
-```astro
-<PageLayout meta={{ description: 'Page description' }}>
-```
-
-To include a page title:
-```astro
-<PageLayout meta={{ title: 'Blog', description: 'Page description' }}>
-```
 
 ## 📄 License
 
