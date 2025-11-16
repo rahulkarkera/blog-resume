@@ -1,8 +1,4 @@
-# Rahul Karkera - Personal Portfolio & Blog
-
-A modern, performant personal website built with Astro v4, featuring a resume-style homepage and blog functionality.
-
-## Overview
+# Personal Portfolio & Blog
 
 This is a personalized portfolio website showcasing my professional experience, skills, and technical blog posts. Built with modern web technologies for optimal performance and user experience.
 
@@ -241,13 +237,3 @@ This project is based on the Astro Resume template with extensive customizations
 - **Resume Design**: [minirezume-framer](https://minirezume.framer.website/) for homepage layout
 - **Theme Icons**: Inspired by [ibelick/nim](https://github.com/ibelick/nim)
 - **Framework**: Built with [Astro](https://astro.build/)
-
-## 📧 Contact
-
-- **GitHub**: [@rahulkarkera](https://github.com/rahulkarkera)
-- **LinkedIn**: [rahulkarkera](https://www.linkedin.com/in/rahulkarkera/)
-- **Location**: Bengaluru, India
-
----
-
-**Status**: ✅ Production Ready | **Last Updated**: November 2025
